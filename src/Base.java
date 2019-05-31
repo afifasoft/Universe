@@ -1,5 +1,17 @@
 public class Base {
 
+    {
+        double r;
+        Point p1 = new Point(3, 4);
+        Point p2 = new Point(8, 2);
+
+        int i = 512;
+
+        double e = 2.71828;
+
+    }
+
+
     public static void main(String[] args) {
         boolean flag = true;
         char ch = 'A';

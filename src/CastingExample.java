@@ -1,7 +1,4 @@
-import com.afifasoft.universe.bean.Apples;
-import com.afifasoft.universe.bean.Carrot;
-import com.afifasoft.universe.bean.Garden;
-import com.afifasoft.universe.bean.WaterCan;
+import com.afifasoft.universe.bean.*;
 import com.afifasoft.universe.constants.ApplicationConstant;
 import com.afifasoft.universe.serviceImpl.GardenServiceImpl;
 import com.afifasoft.universe.serviceImpl.WaterCanServiceImpl;
@@ -81,6 +78,22 @@ public class CastingExample {
         castingExample.isGoodDay("SAT");
         int n = 10;
         castingExample.testWhileLoop(n);
+
+        Apples apples = new Apples();
+        apples.setNumApples(10);
+        castingExample.eatApples(apples);
+
+       // castingExample.getUserInput();
+
+        int date = 13;
+        boolean birthday = castingExample.checkBDay(date);
+        System.out.println("birthday: "+birthday);
+        int[][] a = {{1,2,3}, {3, 4, 5}, {3, 2, 3}};
+        boolean findZero = castingExample.hasZeroEntry(a);
+        System.out.println("findZero: "+findZero);
+        int[] b = {940, 880, 830, 790, 750, 660, 650, 590, 510, 440};
+        int sumofArray = castingExample.sum(b);
+        System.out.println("sumOfArray: "+sumofArray);
 
     }
 
@@ -188,9 +201,11 @@ public class CastingExample {
 
     public void eatApples(Apples apples) {
         numApples = apples.getNumApples();
+        System.out.println("numApples: "+ numApples);
         for (int x = 0; x < numApples; x++) {
             eatApples(apples.getApples(x));
-            spitOutCore();
+            System.out.println("x: "+x);
+            //spitOutCore();
 
         }
     }
@@ -218,12 +233,59 @@ public class CastingExample {
     }
 
     private void handleInput(String input) {
+
+        for(int i = 0; i < input.length(); i++){
+
+            System.out.println("each char: "+input.charAt(i));
+        }
+
     }
 
     public String getInputString() {
-
-        return "";
+        String name = "Burjuman";
+        return name;
     }
+
+    // Check for a specific birthday
+    public boolean checkBDay (int date) {
+        Birthdays birthdays = new Birthdays();
+        if (date == birthdays.MIKES_BDAY) {
+            return true;
+        }
+        // break; // it is used to 'break' out of the innermost switch, for, while, or do-while statement body
+        // continue // the continue statement can only be used inside loops ( for, while, and do-while )
+        return false; // return statement must be a the last statement executed in a function
+    }
+
+
+    public  boolean hasZeroEntry (int[][] a) {
+        boolean foundFlag = false;
+
+        zeroSearch:
+            for (int i = 0; i < a.length; i++) {
+                for(int j = 0; j < a[i].length; j++) {
+                    if (a[i][j] == 0) {
+                        foundFlag = true;
+                        break zeroSearch;
+                    }
+                }
+            }
+            return foundFlag;
+    }
+
+    /** Adds all the numbers in an integer array. */
+    public int sum(int[] a) {
+        int total = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            total += a[i];
+
+        }
+
+        return total;
+    }
+
+
 
     
 }
